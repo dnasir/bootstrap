@@ -1120,6 +1120,74 @@ describe('datepicker directive', function () {
         $rootScope.$digest();
         expect(inputEl.val()).toBe('30/09/2010');
       });
+
+      describe('string to Date with various formats', function() {
+        it('format = `dd.MM.yyyy`', function() {
+          $rootScope.format = 'dd.MM.yyyy';
+          $rootScope.$digest();
+
+          changeInputValueTo(inputEl, '08.11.1983');
+
+          expect($rootScope.date.getFullYear()).toEqual(1983);
+          expect($rootScope.date.getMonth()).toEqual(10);
+          expect($rootScope.date.getDate()).toEqual(8);
+        });
+
+        it('format = `yyyy-MM-dd`', function() {
+          $rootScope.format = 'yyyy-MM-dd';
+          $rootScope.$digest();
+
+          changeInputValueTo(inputEl, '1983-11-08');
+
+          expect($rootScope.date.getFullYear()).toEqual(1983);
+          expect($rootScope.date.getMonth()).toEqual(10);
+          expect($rootScope.date.getDate()).toEqual(8);
+        });
+
+        it('format = `M d, y`', function() {
+          $rootScope.format = 'M d, y';
+          $rootScope.$digest();
+
+          changeInputValueTo(inputEl, 'November 8, 1983');
+
+          expect($rootScope.date.getFullYear()).toEqual(1983);
+          expect($rootScope.date.getMonth()).toEqual(10);
+          expect($rootScope.date.getDate()).toEqual(8);
+        });
+
+        it('format = `longDate`', function() {
+          $rootScope.format = 'longDate';
+          $rootScope.$digest();
+
+          changeInputValueTo(inputEl, 'November 8, 1983');
+
+          expect($rootScope.date.getFullYear()).toEqual(1983);
+          expect($rootScope.date.getMonth()).toEqual(10);
+          expect($rootScope.date.getDate()).toEqual(8);
+        });
+
+        it('format = `mediumDate`', function() {
+          $rootScope.format = 'mediumDate';
+          $rootScope.$digest();
+
+          changeInputValueTo(inputEl, 'Nov 8, 1983');
+
+          expect($rootScope.date.getFullYear()).toEqual(1983);
+          expect($rootScope.date.getMonth()).toEqual(10);
+          expect($rootScope.date.getDate()).toEqual(8);
+        });
+
+        it('format = `shortDate`', function() {
+          $rootScope.format = 'shortDate';
+          $rootScope.$digest();
+
+          changeInputValueTo(inputEl, '11/8/83');
+
+          expect($rootScope.date.getFullYear()).toEqual(1983);
+          expect($rootScope.date.getMonth()).toEqual(10);
+          expect($rootScope.date.getDate()).toEqual(8);
+        });
+      });
     });
 
     describe('`close-on-date-selection` attribute', function () {
