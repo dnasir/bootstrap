@@ -82,7 +82,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.position'])
           y = 4;
         }
         year = getInt(val, i_val, x, y);
-        if (year == null) {
+        if (year === null) {
           return null;
         }
         i_val += year.length;
@@ -110,8 +110,8 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.position'])
           return undefined;
         }
       } else if (token == 'EEEE' || token == 'EEE') {
-        for (var i = 0; i < dayNames.length; i++) {
-          var day_name = dayNames[i];
+        for (var j = 0; j < dayNames.length; j++) {
+          var day_name = dayNames[j];
           if (val.substring(i_val, i_val + day_name.length).toLowerCase() == day_name.toLowerCase()) {
             i_val += day_name.length;
             break;
@@ -119,37 +119,37 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.position'])
         }
       } else if (token == 'MM' || token == 'M') {
         month = getInt(val, i_val, token.length, 2);
-        if (month == null || (month < 1) || (month > 12)) {
+        if (month === null || (month < 1) || (month > 12)) {
           return undefined;
         }
         i_val += month.length;
       } else if (token == 'dd' || token == 'd') {
         date = getInt(val, i_val, token.length, 2);
-        if (date == null || (date < 1) || (date > 31)) {
+        if (date === null || (date < 1) || (date > 31)) {
           return undefined;
         }
         i_val += date.length;
       } else if (token == 'hh' || token == 'h') {
         hh = getInt(val, i_val, token.length, 2);
-        if (hh == null || (hh < 1) || (hh > 12)) {
+        if (hh === null || (hh < 1) || (hh > 12)) {
           return undefined;
         }
         i_val += hh.length;
       } else if (token == 'HH' || token == 'H') {
         hh = getInt(val, i_val, token.length, 2);
-        if (hh == null || (hh < 0) || (hh > 23)) {
+        if (hh === null || (hh < 0) || (hh > 23)) {
           return undefined;
         }
         i_val += hh.length;
       } else if (token == 'mm' || token == 'm') {
         mm = getInt(val, i_val, token.length, 2);
-        if (mm == null || (mm < 0) || (mm > 59)) {
+        if (mm === null || (mm < 0) || (mm > 59)) {
           return undefined;
         }
         i_val += mm.length;
       } else if (token == 'ss' || token == 's') {
         ss = getInt(val, i_val, token.length, 2);
-        if (ss == null || (ss < 0) || (ss > 59)) {
+        if (ss === null || (ss < 0) || (ss > 59)) {
           return undefined;
         }
         i_val += ss.length;
@@ -179,7 +179,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.position'])
     // Is date valid for month?
     if (month == 2) {
       // Check for leap year
-      if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) { // leap year
+      if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) { // leap year
         if (date > 29) {
           return undefined;
         }
